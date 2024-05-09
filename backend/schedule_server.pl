@@ -1,11 +1,14 @@
+:- module(schedule_controller, [
+    start_server/1
+]).
 :- use_module(library(http/thread_httpd)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/http_json)).
 :- use_module(library(http/http_parameters)).
-:- use_module(schedule_service). 
+:- use_module(schedule_service).
 
 % Inisialisasi server
-server(Port) :-
+start_server(Port) :-
     http_server(http_dispatch, [port(Port)]).
 
 % Endpoint untuk menambah jadwal
@@ -59,4 +62,4 @@ handle_conflict(Request) :-
     ;   reply_json_dict(_{status: 'no conflict'})).
 
 % Memulai server pada port 5000
-:- initialization(server(5000)).
+:- initialization(start_server(5000)).
