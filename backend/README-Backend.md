@@ -19,6 +19,7 @@ Proyek ini terdiri dari dua file utama:
 
 - `schedule_server.pl`: File ini mengatur server HTTP dan endpoint.
 - `schedule_service.pl`: File ini mengandung logika bisnis untuk operasi yang berhubungan dengan jadwal.
+- `schedule_model.pl`: File ini mendefinisikan model data dan inisialisasi data awal.
 
 ## Menjalankan Server
 
