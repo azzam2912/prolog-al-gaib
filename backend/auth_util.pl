@@ -9,10 +9,6 @@
 % user(Email, Name, Password, RoleId, Avatar, CreatedAt, UpdatedAt).
 :- dynamic user/7.
 
-% Contoh data user
-user('user1@example.com', 'User 1', 'password1', 1, '', '', '').
-user('user2@example.com', 'User 2', 'password2', 2, '', '', '').
-
 % Predikat untuk autentikasi
 authenticate(Email, Password, User) :-
     user(Email, Name, Password, RoleId, Avatar, CreatedAt, UpdatedAt),
@@ -30,19 +26,34 @@ handle_login(Request) :-
     catch(
         (
             http_read_json_dict(Request, JsonDict),
-            JsonDict.get(username, Username),
-            JsonDict.get(password, Password),
+            JsonDict = _{username: Username, password: Password},
             (authenticate(Username, Password, User) ->
-                reply_json_dict(_{token: 'dummy_token', user: User})
+                reply_json(_{token: 'dummy_token', user: User})
             ;
-                reply_json_dict(_{status: 'error', message: 'Invalid username or password'}, Status=401)
+                reply_json(_{status: 'error', message: 'Invalid username or password'}, [status(401)])
             )
         ),
         Error,
         (
-            reply_json_dict(_{status: 'error', message: Error}, Status=500)
+            ErrorDict = _{status: 'error', message: Error},
+            reply_json(ErrorDict, [status(500)])
         )
     ).
+
+% Endpoint untuk autentikasi
+:- http_handler(root(auth), handle_auth, []).
+
+handle_auth(Request) :-
+    http_read_json_dict(Request, JsonDict),
+    JsonDict.get(email, Email),
+    JsonDict.get(password, Password),
+    (authenticate(Email, Password, User) ->
+        reply_json_dict(User)
+    ;
+        reply_json_dict(_{status: 'failure', message: 'Authentication failed'})
+    ).
+
+
 % Endpoint untuk registrasi
 :- http_handler(root(register), handle_register, []).
 
