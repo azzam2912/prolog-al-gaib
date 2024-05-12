@@ -1,2 +1,4 @@
 user(haikal,rahman).
 user(adi, setiadi).
+user(haikal, bambang)
+user(user(haikal), bambang)
