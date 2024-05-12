@@ -1,5 +1,5 @@
 :- module(auth_util, [
-    user/7
+    authenticate/3, register_user/3
 ]).
 :- use_module(library(http/thread_httpd)).
 :- use_module(library(http/http_dispatch)).
@@ -11,13 +11,13 @@
 
 % Predikat untuk autentikasi
 authenticate(Email, Password, User) :-
-    user(Email, Name, Password, RoleId, Avatar, CreatedAt, UpdatedAt),
-    User = user(Email, Name, RoleId, Avatar).
+    user(Email, Name, Password, CreatedAt, UpdatedAt),
+    User = user(Email, Name, Password, CreatedAt, UpdatedAt).
 
 % Predikat untuk registrasi user baru
-register_user(Email, Name, Password, RoleId) :-
-    \+ user(Email, _, _, _, _, _, _), % Pastikan email belum digunakan
-    assert(user(Email, Name, Password, RoleId, '', '', '')).
+register_user(Email, Name, Password) :-
+    \+ user(Email, _, _, _, _), % Pastikan email belum digunakan
+    assert(user(Email, Name, Password, '', '')).
 
 % Endpoint untuk login
 :- http_handler(root(login), handle_login, []).

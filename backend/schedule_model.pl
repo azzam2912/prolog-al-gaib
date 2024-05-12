@@ -1,9 +1,9 @@
 :- module(schedule_model, [
     jadwal/2, matakuliah/3, kelas/2, jadwal_harian/4, timestamp/4, dosen/2, 
-    matakuliah_list/2, kelas_list/2, jadwal_harian_list/2, dosen_list/2, user/7
+    matakuliah_list/2, kelas_list/2, jadwal_harian_list/2, dosen_list/2, user/5
 ]).
 :- dynamic jadwal/2, matakuliah/3, kelas/2, jadwal_harian/4, timestamp/4, dosen/2,
-    matakuliah_list/2, kelas_list/2, jadwal_harian_list/2, dosen_list/2, user/7.
+    matakuliah_list/2, kelas_list/2, jadwal_harian_list/2, dosen_list/2, user/5.
 
 % Fakta untuk tabel jadwal
 % jadwal(namaJadwal, userEmail).
@@ -47,4 +47,4 @@ dosen_list('', '').
 
 % Fakta untuk tabel user
 % user(email, name, password, roleId, avatar, createdAt, updatedAt).
-user('', '', '', '', '', '', '').
+user('', '', '', '', '').
