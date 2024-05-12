@@ -68,3 +68,33 @@ write_to_database(Row) :-
     nl,
     told.
 
+% Write to database
+% Pake term yang SPESIFK misal user(haikal, rahman), bukan user(A, B)
+delete_from_database(RowToMatch, Found) :- 
+    see(database), 
+    tell(database),
+    read(Row),
+    del_read_until_eof(Row, RowToMatch, Found).
+
+del_read_until_eof(Row, RowToMatch, Found) :-
+    \+del_check_same(Row, RowToMatch), %ga sama, lanjut
+    !,
+    del_check_eof(Row, RowToMatch, Found).
+
+del_read_until_eof(_, RowToMatch, _) :- 
+    read(Next),
+    del_read_until_eof(Next, RowToMatch, true). %sama, skip line, set found to true.
+
+del_check_eof(end_of_file, _, Found) :- !, seen, told, \+check_found(Found).
+
+del_check_eof(Row, RowToMatch, Found) :-
+    write(Row),
+    nl,
+    read(Next),
+    del_read_until_eof(Next, RowToMatch, Found).
+
+check_found(Found) :- Found = false.
+
+del_check_same(Row, RowToMatch) :-
+    copy_term(RowToMatch, Tmp),
+    Row = Tmp.

@@ -1,75 +1,75 @@
 
-user('user1@example.com', 'John Doe', 'password123', '2024-05-09T12:00:00', '2024-05-09T12:00:00').
-user('user2@example.com', 'Jane Smith', 'password456', '2024-05-09T12:00:00', '2024-05-09T12:00:00').
+user("user1@example.com", "John Doe", "password123", "2024-05-09T12:00:00", "2024-05-09T12:00:00").
+user("user2@example.com", "Jane Smith", "password456", "2024-05-09T12:00:00", "2024-05-09T12:00:00").
 
-jadwal('schedule1', 'user1@example.com').
-jadwal('schedule2', 'user1@example.com').
-jadwal('schedule3', 'user2@example.com').
+jadwal("schedule1", "user1@example.com").
+jadwal("schedule2", "user1@example.com").
+jadwal("schedule3", "user2@example.com").
 
-matakuliah_list('schedule1', 'math101').
-matakuliah_list('schedule1', 'phys101').
-matakuliah_list('schedule2', 'chem101').
+matakuliah_list("schedule1", "math101").
+matakuliah_list("schedule1", "phys101").
+matakuliah_list("schedule2", "chem101").
 
-matakuliah('math101', 'Math', 3).
-matakuliah('phys101', 'Physics', 4).
-matakuliah('chem101', 'Chemistry', 3).
+matakuliah("math101", "Math", 3).
+matakuliah("phys101", "Physics", 4).
+matakuliah("chem101", "Chemistry", 3).
 
-kelas_list('math101', 'classA').
-kelas_list('math101', 'classB').
-kelas_list('phys101', 'classC').
-kelas_list('chem101', 'classD').
+kelas_list("math101", "classA").
+kelas_list("math101", "classB").
+kelas_list("phys101", "classC").
+kelas_list("chem101", "classD").
 
-kelas('classA').
-kelas('classB').
-kelas('classC').
-kelas('classD').
+kelas("classA").
+kelas("classB").
+kelas("classC").
+kelas("classD").
 
-dosen_list('classA', 'smith123').
-dosen_list('classA', 'jane456').
-dosen_list('classB', 'alex789').
-dosen_list('classC', 'emily321').
-dosen_list('classD', 'william654').
+dosen_list("classA", "smith123").
+dosen_list("classA", "jane456").
+dosen_list("classB", "alex789").
+dosen_list("classC", "emily321").
+dosen_list("classD", "william654").
 
-dosen('smith123', 'Mr. Smith').
-dosen('jane456', 'Mrs. Jane').
-dosen('alex789', 'Dr. Alex').
-dosen('emily321', 'Dr. Emily').
-dosen('william654', 'Prof. William').
+dosen("smith123", "Mr. Smith").
+dosen("jane456", "Mrs. Jane").
+dosen("alex789", "Dr. Alex").
+dosen("emily321", "Dr. Emily").
+dosen("william654", "Prof. William").
 
-jadwal_harian_list(1, 'schedule1', 'monday1').
-jadwal_harian_list(2, 'schedule1', 'monday2').
-jadwal_harian_list(3, 'schedule1', 'monday3').
-jadwal_harian_list(4, 'schedule2', 'tuesday1').
-jadwal_harian_list(5, 'schedule2', 'tuesday2').
-jadwal_harian_list(6, 'schedule2', 'tuesday3').
-jadwal_harian_list(7, 'schedule3', 'wednesday1').
-jadwal_harian_list(8, 'schedule3', 'wednesday2').
-jadwal_harian_list(9, 'schedule3', 'wednesday3').
-jadwal_harian_list(10, 'schedule4', 'thursday1').
-jadwal_harian_list(11, 'schedule4', 'thursday2').
-jadwal_harian_list(12, 'schedule4', 'thursday3').
-jadwal_harian_list(13, 'schedule5', 'friday1').
-jadwal_harian_list(14, 'schedule5', 'friday2').
-jadwal_harian_list(15, 'schedule5', 'friday3').
+jadwal_harian_list(1, "schedule1", "monday1").
+jadwal_harian_list(2, "schedule1", "monday2").
+jadwal_harian_list(3, "schedule1", "monday3").
+jadwal_harian_list(4, "schedule2", "tuesday1").
+jadwal_harian_list(5, "schedule2", "tuesday2").
+jadwal_harian_list(6, "schedule2", "tuesday3").
+jadwal_harian_list(7, "schedule3", "wednesday1").
+jadwal_harian_list(8, "schedule3", "wednesday2").
+jadwal_harian_list(9, "schedule3", "wednesday3").
+jadwal_harian_list(10, "schedule4", "thursday1").
+jadwal_harian_list(11, "schedule4", "thursday2").
+jadwal_harian_list(12, "schedule4", "thursday3").
+jadwal_harian_list(13, "schedule5", "friday1").
+jadwal_harian_list(14, "schedule5", "friday2").
+jadwal_harian_list(15, "schedule5", "friday3").
 
-jadwal_harian('schedule1', 'monday1', 'monday2', 'monday3').
-jadwal_harian('schedule2', 'tuesday1', 'tuesday2', 'tuesday3').
-jadwal_harian('schedule3', 'wednesday1', 'wednesday2', 'wednesday3').
-jadwal_harian('schedule4', 'thursday1', 'thursday2', 'thursday3').
-jadwal_harian('schedule5', 'friday1', 'friday2', 'friday3').
+jadwal_harian("schedule1", "monday1", "monday2", "monday3").
+jadwal_harian("schedule2", "tuesday1", "tuesday2", "tuesday3").
+jadwal_harian("schedule3", "wednesday1", "wednesday2", "wednesday3").
+jadwal_harian("schedule4", "thursday1", "thursday2", "thursday3").
+jadwal_harian("schedule5", "friday1", "friday2", "friday3").
 
-timestamp('monday1', 'Monday', 8, 0).
-timestamp('monday2', 'Monday', 10, 0).
-timestamp('monday3', 'Monday', 13, 0).
-timestamp('tuesday1', 'Tuesday', 9, 0).
-timestamp('tuesday2', 'Tuesday', 11, 0).
-timestamp('tuesday3', 'Tuesday', 14, 0).
-timestamp('wednesday1', 'Wednesday', 8, 30).
-timestamp('wednesday2', 'Wednesday', 10, 30).
-timestamp('wednesday3', 'Wednesday', 13, 30).
-timestamp('thursday1', 'Thursday', 9, 30).
-timestamp('thursday2', 'Thursday', 11, 30).
-timestamp('thursday3', 'Thursday', 14, 30).
-timestamp('friday1', 'Friday', 8, 45).
-timestamp('friday2', 'Friday', 10, 45).
-timestamp('friday3', 'Friday', 13, 45).
+timestamp("monday1", "Monday", 8, 0).
+timestamp("monday2", "Monday", 10, 0).
+timestamp("monday3", "Monday", 13, 0).
+timestamp("tuesday1", "Tuesday", 9, 0).
+timestamp("tuesday2", "Tuesday", 11, 0).
+timestamp("tuesday3", "Tuesday", 14, 0).
+timestamp("wednesday1", "Wednesday", 8, 30).
+timestamp("wednesday2", "Wednesday", 10, 30).
+timestamp("wednesday3", "Wednesday", 13, 30).
+timestamp("thursday1", "Thursday", 9, 30).
+timestamp("thursday2", "Thursday", 11, 30).
+timestamp("thursday3", "Thursday", 14, 30).
+timestamp("friday1", "Friday", 8, 45).
+timestamp("friday2", "Friday", 10, 45).
+timestamp("friday3", "Friday", 13, 45).
