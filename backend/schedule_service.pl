@@ -9,16 +9,20 @@ add_schedule(UserID, CourseID, Day, StartTime, EndTime) :-
 
 % Mengedit jadwal yang sudah ada
 edit_schedule(UserID, CourseID, NewDay, NewStartTime, NewEndTime) :-
-    retract(jadwal_harian(UserID, CourseID, _, _, _)),
+    retractall(jadwal_harian(UserID, CourseID, _, _, _)),
     assertz(jadwal_harian(UserID, CourseID, NewDay, NewStartTime, NewEndTime)).
 
 % Membaca semua jadwal untuk user tertentu
 get_schedule(UserID, Schedules) :-
-    findall([CourseID, Day, StartTime, EndTime], jadwal_harian(UserID, CourseID, Day, StartTime, EndTime), Schedules).
+    (   findall([CourseID, Day, StartTime, EndTime], jadwal_harian(UserID, CourseID, Day, StartTime, EndTime), Schedules),
+        Schedules \= []
+    ->  true
+    ;   Schedules = []).
 
 % Mendeteksi konflik antara dua kelas
 conflict(Class1, Class2) :-
-    jadwal_harian(_, Class1, Day, Start1, End1),
-    jadwal_harian(_, Class2, Day, Start2, End2),
+    jadwal_harian(_, Class1, Day1, Start1, End1),
+    jadwal_harian(_, Class2, Day2, Start2, End2),
+    Day1 = Day2,
     Class1 \= Class2,
     (Start1 < End2, End1 > Start2).
