@@ -47,8 +47,9 @@ handle_edit_schedule(Request) :-
 
 handle_get_schedule(Request) :-
     http_parameters(Request, [userid(UserID, [integer])]),
-    get_schedule(UserID, Schedules),
-    reply_json_dict(Schedules).
+    (   catch(get_schedule(UserID, Schedules), _, fail)
+    ->  reply_json_dict(Schedules)
+    ;   reply_json_dict([])).
 
 % Endpoint untuk mendeteksi konflik
 :- http_handler(root(conflict), handle_conflict, []).
@@ -58,7 +59,7 @@ handle_conflict(Request) :-
         [ class1(Class1, []),
           class2(Class2, [])
         ]),
-    (   conflict(Class1, Class2)
+    (   catch(conflict(Class1, Class2), _, fail)
     ->  reply_json_dict(_{status: 'conflict'})
     ;   reply_json_dict(_{status: 'no conflict'})).
 

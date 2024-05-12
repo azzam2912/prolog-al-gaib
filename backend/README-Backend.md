@@ -50,7 +50,10 @@ Untuk menjalankan server, ikuti langkah-langkah berikut:
   - endtime: Waktu selesai
 - Contoh Penggunaan:
     ``` 
-    curl -X POST "http://localhost:5000/add_schedule?userid=1&courseid=CS101&day=monday&sta
+    curl -X POST "http://localhost:5000/add_schedule" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "userid=1&courseid=CS101&day=monday&starttime=9&endtime=11"
+    
     ```
 
 ### Mengedit Jadwal
@@ -65,7 +68,9 @@ Untuk menjalankan server, ikuti langkah-langkah berikut:
   - newendtime: Waktu selesai baru
 - Contoh Penggunaan:
   ```
-  curl -X POST "http://localhost:5000/edit_schedule?userid=1&courseid=CS101&newday=tuesday&newstarttime=10&newendtime=12"
+  curl -X POST "http://localhost:5000/edit_schedule" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "userid=1&courseid=CS101&newday=tuesday&newstarttime=10&newendtime=12"
   ```
 
 ### Mendapatkan Jadwal
@@ -80,7 +85,7 @@ Untuk menjalankan server, ikuti langkah-langkah berikut:
     ```
 
 
-### Mengedit Jadwal
+### Mendeteksi Konflik Jadwal
 
 - URL: /conflict
 - Metode: GET
