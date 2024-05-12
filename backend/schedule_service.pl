@@ -27,9 +27,6 @@ conflict(Class1, Class2) :-
     Class1 \= Class2,
     (Start1 < End2, End1 > Start2).
 
-% Convert row to term
-% exp f(a, b) jadi f(A, B)
-%[TO DO]
 
 % Read all row that matches from database
 % Pake term yang GENERAL misal user(A, B), bukan user(haikal, rahman)
