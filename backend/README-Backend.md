@@ -28,9 +28,13 @@ Untuk menjalankan server, ikuti langkah-langkah berikut:
 1. Buka terminal.
 2. Navigasikan ke direktori `backend`.
 3. Jalankan perintah berikut di terminal:
-   ``` 
-   swipl
-   ```
+    ``` 
+    swipl
+    ```
+4. Setelah masuk ke dalam swipl terminal, jalankan server:
+    ```
+    [server].
+    ```
 
 ## API Endpoints
 

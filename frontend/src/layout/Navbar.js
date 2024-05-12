@@ -23,7 +23,7 @@ const Navbar = () => {
                 href="/buat-jadwal"
                 className="text-gray-300 hover:bg-purple-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
               >
-                Buat Jadwal Baru
+                Buat/Edit Jadwal
               </a>
               <a
                 href="/login"
@@ -49,24 +49,6 @@ const Navbar = () => {
               )}
             </button>
           </div>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
-      <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <a
-            href="/buat-jadwal"
-            className="text-gray-300 hover:bg-purple-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Buat Jadwal Baru
-          </a>
-          <a
-            href="/login"
-            className="text-gray-300 hover:bg-purple-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Login
-          </a>
         </div>
       </div>
     </nav>

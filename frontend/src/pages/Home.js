@@ -1,44 +1,23 @@
-import React, { useState } from 'react';
-import ScheduleBuilder from '../Schedule/ScheduleBuilder';
+import React from 'react';
 
-const HomePage = () => {
-  const [selectedCourse, setSelectedCourse] = useState(null);
-  const [showSchedule, setShowSchedule] = useState(false);
-
-  const courses = [
-    'Aljabar Linier',
-    'Analisis Numerik',
-    'Basis Data',
-    // Add more courses as needed
-  ];
-
-  const handleCourseSelect = (course) => {
-    setSelectedCourse(course);
-    setShowSchedule(true);
-  };
-
+const Home = () => {
   return (
     <div className="bg-white p-4 rounded-lg shadow-md">
-      <h2 className="text-lg font-bold mb-4">Pilih Mata Kuliah</h2>
-      <div className="grid grid-cols-3 gap-4">
-        {courses.map((course) => (
-          <button
-            key={course}
-            className="bg-purple-600 text-white p-4 rounded-md hover:bg-purple-700"
-            onClick={() => handleCourseSelect(course)}
-          >
-            {course}
-          </button>
-        ))}
-      </div>
-      {showSchedule && (
-        <div className="mt-8">
-          <h3 className="text-md font-bold mb-4">Jadwal Terpilih</h3>
-          <ScheduleBuilder selectedCourse={selectedCourse} />
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-lg font-bold">Daftar Jadwal</h2>
+        <div className="flex space-x-2">
         </div>
-      )}
+      </div>
+      <h3 className="text-md font-bold mb-2">Semester Genap 2023/2024</h3>
+      <div className="grid grid-cols-2 gap-4">
+        <div className="bg-purple-600 text-white p-4 rounded-md">
+          <h4 className="text-lg font-bold">Intern Safe</h4>
+          <p>Dibuat pada 13/1/2024</p>
+        </div>
+        
+      </div>
     </div>
   );
 };
 
-export default HomePage;
+export default Home;

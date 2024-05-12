@@ -1,3 +1,10 @@
+:- module(auth_util, [
+    user/7
+]).
+:- use_module(library(http/thread_httpd)).
+:- use_module(library(http/http_dispatch)).
+:- use_module(library(http/http_json)).
+:- use_module(library(http/http_parameters)).
 % Fakta untuk tabel user
 % user(Email, Name, Password, RoleId, Avatar, CreatedAt, UpdatedAt).
 :- dynamic user/7.
@@ -16,19 +23,26 @@ register_user(Email, Name, Password, RoleId) :-
     \+ user(Email, _, _, _, _, _, _), % Pastikan email belum digunakan
     assert(user(Email, Name, Password, RoleId, '', '', '')).
 
-% Endpoint untuk autentikasi
-:- http_handler(root(auth), handle_auth, []).
+% Endpoint untuk login
+:- http_handler(root(login), handle_login, []).
 
-handle_auth(Request) :-
-    http_read_json_dict(Request, JsonDict),
-    JsonDict.get(email, Email),
-    JsonDict.get(password, Password),
-    (authenticate(Email, Password, User) ->
-        reply_json_dict(User)
-    ;
-        reply_json_dict(_{status: 'failure', message: 'Authentication failed'})
+handle_login(Request) :-
+    catch(
+        (
+            http_read_json_dict(Request, JsonDict),
+            JsonDict.get(username, Username),
+            JsonDict.get(password, Password),
+            (authenticate(Username, Password, User) ->
+                reply_json_dict(_{token: 'dummy_token', user: User})
+            ;
+                reply_json_dict(_{status: 'error', message: 'Invalid username or password'}, Status=401)
+            )
+        ),
+        Error,
+        (
+            reply_json_dict(_{status: 'error', message: Error}, Status=500)
+        )
     ).
-
 % Endpoint untuk registrasi
 :- http_handler(root(register), handle_register, []).
 

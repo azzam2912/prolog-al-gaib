@@ -1,4 +1,4 @@
-:- module(schedule_controller, [
+:- module(controller, [
     start_server/1
 ]).
 :- use_module(library(http/thread_httpd)).
@@ -6,6 +6,7 @@
 :- use_module(library(http/http_json)).
 :- use_module(library(http/http_parameters)).
 :- use_module(schedule_service).
+:- use_module(auth_util).
 
 % Inisialisasi server
 start_server(Port) :-
@@ -62,4 +63,4 @@ handle_conflict(Request) :-
     ;   reply_json_dict(_{status: 'no conflict'})).
 
 % Memulai server pada port 5000
-:- initialization(start_server(5000)).
+:- initialization(start_server(3001)).
