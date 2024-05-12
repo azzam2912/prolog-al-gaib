@@ -40,7 +40,7 @@ read_all_from_database(RowToMatch, Result) :-
     seen.
 
 ra_read_until_eof(Row, RowToMatch, Result) :-
-    check_same(Row, RowToMatch),
+    ra_check_same(Row, RowToMatch),
     !,
     ra_check_eof(Row, RowToMatch, Result).
 
