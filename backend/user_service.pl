@@ -1,5 +1,6 @@
 :- module(user_service, [add_user/5, edit_user/5, get_user/2]).
 :- use_module(schedule_model).
+:- use_module(database_service).
 
 % Menambahkan user baru
 add_user(Email, Name, Password, RoleId, Avatar) :-
