@@ -18,13 +18,3 @@ edit_user(Email, NewName, NewPassword, NewRoleId, NewAvatar) :-
 % Membaca data user
 get_user(Email, User) :-
     read_all_from_database(user(Email, _, _, _, _), [User]).
-
-% Mendapatkan waktu saat ini
-get_time(Time) :-
-    get_time(Atom),
-    atom_string(Atom, Time).
-
-% Konversi atom ke string
-atom_string(Atom, String) :-
-    atom_codes(Atom, Codes),
-    string_codes(String, Codes).
